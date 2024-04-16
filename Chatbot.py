@@ -66,24 +66,25 @@ if prompt := user_input:
     st.session_state.messages.append({"role": "system", "content": system_prompt})
     st.chat_message("user").write(prompt)
 
-    response = client.chat.completions.create(
-        model=st.session_state["openai_model"], 
-        messages=st.session_state.messages,
-        max_tokens=1000,
-        temperature=0.7
-        )
-    msg = response.choices[0].message.content
+    with st.spinner('Please wait...'):
+        response = client.chat.completions.create(
+            model=st.session_state["openai_model"], 
+            messages=st.session_state.messages,
+            max_tokens=1000,
+            temperature=0.7
+            )
+        msg = response.choices[0].message.content
 
-    st.session_state.messages.append({"role": "assistant", "content": msg})
-    st.chat_message("assistant").write(msg)
+        st.session_state.messages.append({"role": "assistant", "content": msg})
+        st.chat_message("assistant").write(msg)
 
 
-    # 대화 로그를 파일에 저장하는 함수
-    def save_conversation_to_file(conversation):
-        with open("chat_log.csv", "w", encoding="utf-8") as file:
-            for message in conversation:
-                file.write(f"{message['role']}: {message['content']}\n")
+        # 대화 로그를 파일에 저장하는 함수
+        def save_conversation_to_file(conversation):
+            with open("chat_log.csv", "w", encoding="utf-8") as file:
+                for message in conversation:
+                    file.write(f"{message['role']}: {message['content']}\n")
 
-    # 대화 종료 메시지 감지
-    if user_input == "대화 종료":
-        save_conversation_to_file(st.session_state["messages"])  
+        # 대화 종료 메시지 감지
+        if user_input == "대화 종료":
+            save_conversation_to_file(st.session_state["messages"])  
