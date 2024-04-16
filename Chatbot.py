@@ -3,7 +3,8 @@ import streamlit as st
 
 with st.sidebar:
     st.sidebar.header('Career Counseling Chatbot')
-    "[CDDQ 측정](https://kivunim.huji.ac.il/eng-quest/cddq_nse/cddq_nse_main.html)"
+    st.sidebar.markdown('진로 결정 어려움을 해결하여 진로 결정을 잘할 수 있도록 도와주는 AI 진로 상담사')
+    st.sidebar.link_button("Career Decision-making Difficulties Questionnaire", "https://kivunim.huji.ac.il/eng-quest/cddq_nse/cddq_nse_main.html")
 
 st.title("💬 Career Counseling Chatbot")
 st.caption("🚀 A chatbot powered by OpenAI LLM")
@@ -43,10 +44,11 @@ openai_api_key = st.secrets['OPENAI_API_KEY']
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "안녕! 저는 당신의 진로 상담사입니다. 당신의 이름은 무엇인가요?"}]
-    st.session_state.messages.append({"role": "system", "content": system_prompt})
-
+    
+# Display chat messages from history on app rerun
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
+    st.session_state.messages.append({"role": "system", "content": system_prompt})
 
 user_input = st.chat_input()
 if prompt := user_input:
@@ -54,9 +56,10 @@ if prompt := user_input:
         st.info("Please add your OpenAI API key to continue.")
         st.stop()
 
-    client = OpenAI(api_key=openai_api_key)
+    # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
+
     response = client.chat.completions.create(
         model="gpt-4-1106-preview", 
         messages=st.session_state.messages,
@@ -64,6 +67,7 @@ if prompt := user_input:
         temperature=0.7
         )
     msg = response.choices[0].message.content
+
     st.session_state.messages.append({"role": "assistant", "content": msg})
     st.chat_message("assistant").write(msg)
 
