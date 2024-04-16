@@ -36,12 +36,18 @@ After I ask my questions, I’ll share with you only my thoughts and observation
 
 '''
 
+# Set a default model
+if "openai_model" not in st.session_state:    
+    st.session_state["openai_model"] = "gpt-4-1106-preview"
+
 # Set OpenAI API key 
 client = OpenAI(api_key=st.secrets['OPENAI_API_KEY'], 
                 organization=st.secrets['OPENAI_ORGANIZATION'])
 openai_api_key = st.secrets['OPENAI_API_KEY']
 
 
+
+# Initialize chat history
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "안녕! 저는 당신의 진로 상담사입니다. 당신의 이름은 무엇인가요?"}]
     
@@ -61,7 +67,7 @@ if prompt := user_input:
     st.chat_message("user").write(prompt)
 
     response = client.chat.completions.create(
-        model="gpt-4-1106-preview", 
+        model=st.session_state["openai_model"], 
         messages=st.session_state.messages,
         max_tokens=1000,
         temperature=0.7
