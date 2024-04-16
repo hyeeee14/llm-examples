@@ -2,7 +2,7 @@ from openai import OpenAI
 import streamlit as st
 
 with st.sidebar:
-    openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
+    st.sidebar.header('Career Counseling Chatbot')
     "[CDDQ 측정](https://kivunim.huji.ac.il/eng-quest/cddq_nse/cddq_nse_main.html)"
 
 st.title("💬 Career Counseling Chatbot")
@@ -35,6 +35,10 @@ After I ask my questions, I’ll share with you only my thoughts and observation
 
 '''
 
+# Set OpenAI API key 
+client = OpenAI(api_key=st.secrets['OPENAI_API_KEY'], 
+                organization=st.secrets['OPENAI_ORGANIZATION'])
+openai_api_key = st.secrets['OPENAI_API_KEY']
 
 
 if "messages" not in st.session_state:
@@ -44,7 +48,8 @@ if "messages" not in st.session_state:
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
-if prompt := st.chat_input():
+user_input = st.chat_input()
+if prompt := user_input:
     if not openai_api_key:
         st.info("Please add your OpenAI API key to continue.")
         st.stop()
@@ -52,7 +57,23 @@ if prompt := st.chat_input():
     client = OpenAI(api_key=openai_api_key)
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
-    response = client.chat.completions.create(model="gpt-3.5-turbo", messages=st.session_state.messages)
+    response = client.chat.completions.create(
+        model="gpt-4-1106-preview", 
+        messages=st.session_state.messages,
+        max_tokens=1000,
+        temperature=0.7
+        )
     msg = response.choices[0].message.content
     st.session_state.messages.append({"role": "assistant", "content": msg})
     st.chat_message("assistant").write(msg)
+
+
+    # 대화 로그를 파일에 저장하는 함수
+    def save_conversation_to_file(conversation):
+        with open("chat_log.csv", "w", encoding="utf-8") as file:
+            for message in conversation:
+                file.write(f"{message['role']}: {message['content']}\n")
+
+    # 대화 종료 메시지 감지
+    if user_input == "대화 종료":
+        save_conversation_to_file(st.session_state["messages"])  
