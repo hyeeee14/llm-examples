@@ -46,7 +46,6 @@ client = OpenAI(api_key=st.secrets['OPENAI_API_KEY'],
 openai_api_key = st.secrets['OPENAI_API_KEY']
 
 
-
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "안녕! 저는 당신의 진로 상담사입니다. 당신의 이름은 무엇인가요?"}]
@@ -54,7 +53,7 @@ if "messages" not in st.session_state:
 # Display chat messages from history on app rerun
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
-    st.session_state.messages.append({"role": "system", "content": system_prompt})
+    
 
 user_input = st.chat_input()
 if prompt := user_input:
@@ -64,6 +63,7 @@ if prompt := user_input:
 
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
+    st.session_state.messages.append({"role": "system", "content": system_prompt})
     st.chat_message("user").write(prompt)
 
     response = client.chat.completions.create(
