@@ -55,16 +55,15 @@ for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
     
 
-user_input = st.chat_input()
-if prompt := user_input:
+if user_input := st.chat_input():
     if not openai_api_key:
         st.info("Please add your OpenAI API key to continue.")
         st.stop()
 
     # Add user message to chat history
-    st.session_state.messages.append({"role": "user", "content": prompt})
+    st.session_state.messages.append({"role": "user", "content": user_input})
     st.session_state.messages.append({"role": "system", "content": system_prompt})
-    st.chat_message("user").write(prompt)
+    st.chat_message("user").write(user_input)
 
     with st.spinner('Please wait...'):
         response = client.chat.completions.create(
