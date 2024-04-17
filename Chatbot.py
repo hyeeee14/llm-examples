@@ -2,8 +2,8 @@ from openai import OpenAI
 import streamlit as st
 
 
-st.title("💬 Career Counseling Chatbot")
-st.caption("🚀 A chatbot powered by OpenAI LLM")
+st.title("Career Counseling Chatbot💬")
+st.caption("🚀 AI Career Counselor Conversational Assistant produced by Hyerim")
 
 system_prompt = '''
 You are a career counselor assistant. 
