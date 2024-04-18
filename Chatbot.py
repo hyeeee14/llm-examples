@@ -121,7 +121,6 @@ Despite the above description, whenever the user says "대화 종료", just give
 The flow of each session should be very natural, and you should always be empathetic and friendly towards the user.
 
 '''
-
 # Set a default model
 if "openai_model" not in st.session_state:    
     st.session_state["openai_model"] = "gpt-4-1106-preview"
