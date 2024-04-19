@@ -19,7 +19,7 @@ openai_api_key = st.secrets['OPENAI_API_KEY']
 # Initialize chat history
 if "conversation_history" not in st.session_state:    
     st.session_state.conversation_history = [
-        {"role": "system", "content": system_prompt},
+        {"role": "system", "content": st.secrets['system_prompt']},
         {"role": "assistant", "content": "안녕하세요! 저는 당신의 AI 진로 상담사입니다. 당신의 이름은 무엇인가요?"}
     ]
 
