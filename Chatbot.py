@@ -75,7 +75,7 @@ with st.sidebar:
     st.sidebar.header('Career Counseling Chatbot')
     st.sidebar.markdown('진로 결정 어려움을 해결하여 진로 결정을 잘할 수 있도록 도와주는 AI 진로 상담사')
     st.sidebar.link_button("Career Decision-making Difficulties Questionnaire", "https://kivunim.huji.ac.il/eng-quest/cddq_nse/cddq_nse_main.html")
-    st.sidebar.button("로그 저장", on_click=save_conversation_to_file(st.session_state["conversation_history"]))
+    #st.sidebar.button("로그 저장", on_click=save_conversation_to_file(st.session_state["conversation_history"]))
 
 
 
