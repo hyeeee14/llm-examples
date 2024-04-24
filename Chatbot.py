@@ -1,6 +1,9 @@
 from openai import OpenAI
 import streamlit as st
 
+with st.expander('이 앱에 대하여'):
+  st.write('이 앱은 Streamlit 앱을 구성하는 다양한 방법을 보여줍니다.')
+
 
 st.title("Career Counseling Chatbot💬")
 st.caption("🚀 AI Career Counselor Conversational Assistant produced by Hyerim")
