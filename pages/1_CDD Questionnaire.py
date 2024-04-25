@@ -17,10 +17,10 @@ st.markdown(
 
 # Create Radio Buttons
 score_1 = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
-q_1 = st.radio('1. I know that I have to choose a career, but I don’t have the motivation to make the decision now (I don’t feel like it)', options = score_1)   
+q_1 = st.radio('1. I know that I have to choose a career, but I don’t have the motivation to make the decision now (I don’t feel like it)', options = score_1, horizontal=True)   
 
 score_2 = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
-q_2 = st.radio('2. Work is not the most important thing in one’s life and therefore the issue of choosing a career doesn’t worry me much.', options = score_2)   
+q_2 = st.radio('2. Work is not the most important thing in one’s life and therefore the issue of choosing a career doesn’t worry me much.', options = score_2, horizontal=True)  
 
 with st.sidebar:
     st.sidebar.header('Career Decision-making Difficulties Questionnaire')
