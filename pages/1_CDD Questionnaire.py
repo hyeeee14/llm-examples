@@ -36,6 +36,16 @@ q_9 = st.radio('9. I expect that through the career I choose I will fulfill all 
 score_10 = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 q_10 = st.radio('10. I believe that a career choice is a one-time choice and a life-long commitment.', options = score_10, horizontal=True)  
 
+with st.button("Success"):
+    score_mot = (score_1+score_2+score_3)/3
+    score_ind = (score_4+score_5+score_6)/3
+    score_bel = (score_7+score_8+score_9+score_10)/4
+
+    st.text_area("1. Lack of motivation", score_mot)
+    st.text_area("2. General indecisiveness", score_ind)
+    st.text_area("3. Dysfunctional beliefs ", score_bel)
+
+
 
 with st.sidebar:
     st.sidebar.header('Career Decision-making Difficulties Questionnaire')
