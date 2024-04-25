@@ -3,6 +3,7 @@ import streamlit as st
 st.title("Career Decision-making Difficulties Questionnaire📝")
 st.caption("Measure the difficulty of making career decisions with a total of 10 questions. by. Gati")
 
+'''
 # CSS를 사용하여 라디오 버튼을 수평으로 배치
 st.markdown(
     """
@@ -12,6 +13,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+'''
 
 # Create Radio Buttons
 score_1 = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
