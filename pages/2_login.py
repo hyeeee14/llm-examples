@@ -51,4 +51,3 @@ with st.container(border=True):
 
 if st.button("⬅️     시작 화면으로 돌아가기", use_container_width=True):
     st.switch_page("app.py")
-)
