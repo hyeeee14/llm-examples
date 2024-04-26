@@ -14,7 +14,7 @@ except Exception as e:
 if "user_id" not in st.session_state:
     st.error("로그인이 필요합니다.")
     if st.button("로그인하러 가기"):
-        st.switch_page("pages/Login.py")
+        st.switch_page("pages/2_login.py")
     st.stop()
     
 user_id = st.session_state["user_id"]
