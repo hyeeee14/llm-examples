@@ -58,6 +58,7 @@ if user_input := st.chat_input():
 
 
 # 대화 로그를 파일에 저장하는 함수
+
 def save_conversation_to_file(conversation):
     with open("chat_log.csv", mode='a', newline='', encoding="utf-8") as file:
         for message in conversation:

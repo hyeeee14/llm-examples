@@ -37,14 +37,13 @@ score_10 = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 q_10 = st.radio('10. I believe that a career choice is a one-time choice and a life-long commitment.', options = score_10, horizontal=True)  
 
 if st.button("Complete"):
-    st.text(score_1.label)
-    #score_mot = (score_1.label+score_2+score_3)/3
-    #score_ind = (score_4+score_5+score_6)/3
-    #score_bel = (score_7+score_8+score_9+score_10)/4
+    score_mot = (score_1.label+score_2+score_3)/3
+    score_ind = (score_4+score_5+score_6)/3
+    score_bel = (score_7+score_8+score_9+score_10)/4
 
-    #st.text_area("1. Lack of motivation", score_mot)
-    #st.text_area("2. General indecisiveness", score_ind)
-    #st.text_area("3. Dysfunctional beliefs ", score_bel)
+    st.text_area("1. Lack of motivation", score_mot)
+    st.text_area("2. General indecisiveness", score_ind)
+    st.text_area("3. Dysfunctional beliefs ", score_bel)
 
 
 
