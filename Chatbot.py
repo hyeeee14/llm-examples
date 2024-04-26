@@ -5,7 +5,7 @@ import streamlit as st
 from datetime import datetime
 from st_supabase_connection import SupabaseConnection
 
-st_supabase_client = st.connection("supabase",type=SupabaseConnection)
+st_supabase_client = st.connection("supabase",type=SupabaseConnection, url=st.secrets['SUPABASE_URL'], key=st.secrets['SUPABASE_KEY'])
 try:
     st_supabase_client.table("career2").select("user_name, message").execute()
 except Exception as e:
