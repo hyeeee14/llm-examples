@@ -5,4 +5,4 @@ duckduckgo-search
 anthropic>=0.3.0
 trubrics>=1.4.3
 streamlit-feedback
-st_supabase_connection = 1.2.2
+st_supabase_connection
