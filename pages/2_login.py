@@ -33,6 +33,3 @@ with st.container(border=True):
         except Exception as e:
             st.error("로그인 실패")
 
-
-if st.button("⬅️     시작 화면으로 돌아가기", use_container_width=True):
-    st.switch_page("app.py")
