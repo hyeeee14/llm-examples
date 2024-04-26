@@ -28,7 +28,7 @@ with st.container(border=True):
                 if "user_metadata" not in st.session_state:
                     st.session_state["user_metadata"] = supabase_response.user.user_metadata
                     
-                st.switch_page("pages/Chatbot.py")
+                #st.switch_page("pages/Chatbot.py")
 
         except Exception as e:
             st.error("로그인 실패")
