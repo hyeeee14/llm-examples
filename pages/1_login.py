@@ -48,16 +48,3 @@ with st.container(border=True):
                 except Exception as e:
                     st.error("로그인 실패")
                     
-
-if st.button("⬅️     시작 화면으로 돌아가기", use_container_width=True):
-    st.switch_page("app.py")
-
-# 회색 배경에 작은 글씨로 중앙 정렬된 캡션 추가
-st.write("#")
-
-st.markdown(
-    "<div style='text-align: center; font-size: 15px;'>"
-    "👯 본 앱은 서울과학기술대학교 HAI LAB 유박사 팀에서 개발했습니다 👯"
-    "</div>",
-    unsafe_allow_html=True
-)
