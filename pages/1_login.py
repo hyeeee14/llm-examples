@@ -1,5 +1,5 @@
 import streamlit as st
-from st_supabase_connection import SupabaseConnection
+from st_supabasepi_connection import SupabaseConnection
 
 
 st_supabase_client = st.connection("supabase", type=SupabaseConnection)
