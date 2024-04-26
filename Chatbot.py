@@ -7,7 +7,7 @@ from st_supabase_connection import SupabaseConnection
 
 st_supabase_client = st.connection("supabase",type=SupabaseConnection)
 try:
-    st_supabase_client.table("chat").select("user_name, message").execute()
+    st_supabase_client.table("career2").select("user_name, message").execute()
 except Exception as e:
     st.write(e)
 
