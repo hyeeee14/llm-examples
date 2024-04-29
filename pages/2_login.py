@@ -1,8 +1,11 @@
 import streamlit as st
-# from pip import SupabaseConnection
 from st_supabase_connection import SupabaseConnection
+from supabase import create_client, Client
 
-st_supabase_client = st.connection("supabase",type=SupabaseConnection, url=st.secrets['SUPABASE_URL'], key=st.secrets['SUPABASE_KEY'])
+SUPABASE_URL = st.secrets["SUPABASE_URL"]
+SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
+
+st_supabase_client = st.connection("supabase",type=SupabaseConnection, url=SUPABASE_URL, key=SUPABASE_KEY)
 
 with st.container(border=True):
     st.markdown("#### 로그인")
