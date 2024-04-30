@@ -27,7 +27,6 @@ with st.container(border=True):
                         }
                     }
                 })
-
                 if sign_up_data.error:
                     st.error(f"회원가입 실패: {sign_up_data.error.message}")
                 else:
