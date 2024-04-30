@@ -30,7 +30,7 @@ with st.container(border=True):
                 st.success("회원가입 성공! 로그인 페이지로 이동하세요.")
                                 
             except Exception as e:
-                st.error("회원가입 실패: {sign_up_data.error.message}")
+                st.error("회원가입 실패: ", sign_up_data.error.message)
                 
             if email and password:
                 try:
