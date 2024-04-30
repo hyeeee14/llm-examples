@@ -41,7 +41,6 @@ if "conversation_history" not in st.session_state:
         {"role": "assistant", "content": "안녕하세요! 저는 당신의 AI 진로 상담사입니다. 당신의 이름은 무엇인가요?"}
     ]
 
-
 # Display chat messages from history on app rerun
 for message in st.session_state.conversation_history:        
     if message["role"]=='system':
@@ -51,7 +50,7 @@ for message in st.session_state.conversation_history:
 
 
  
- 
+
 if user_input := st.chat_input():    
     #Add user message to chat history
     #st.session_state.messages.append({"role": "system", "content": system_prompt})
@@ -73,7 +72,7 @@ if user_input := st.chat_input():
         st.session_state.conversation_history.append({"role": "assistant", "content": assistant_reply})
         st.chat_message("assistant").write(assistant_reply)  
 
-     # Store user and assistant message to database
+        # Store user and assistant message to database
         st_supabase_client.table("career2").insert(
             [
                 {
