@@ -32,7 +32,7 @@ with st.container(border=True):
                 else:
                     st.success("회원가입 성공! 로그인 페이지로 이동하세요.")
                                 
-            #except Exception as e:
+            except Exception as e:
                 #st.error("회원가입 실패")
                 
             if email and password:
