@@ -18,7 +18,7 @@ with st.container(border=True):
     with col2:
         if st.button("회원가입"):
             try:
-                st_supabase_client.auth.sign_up({
+                sign_up_data = st_supabase_client.auth.sign_up({
                     "email": email, 
                     "password": password,
                     "options": {
@@ -27,6 +27,11 @@ with st.container(border=True):
                         }
                     }
                 })
+
+                if sign_up_data.error:
+                    st.error(f"회원가입 실패: {sign_up_data.error.message}")
+                else:
+                    st.success("회원가입 성공! 로그인 페이지로 이동하세요.")
                                 
             except Exception as e:
                 st.error("회원가입 실패")
