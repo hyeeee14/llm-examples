@@ -7,8 +7,17 @@ SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
 st_supabase_client = st.connection("supabase",type=SupabaseConnection, url=SUPABASE_URL, key=SUPABASE_KEY)
 
 
+# 컨테이너 생성
 with st.container(border=True):
-    st.markdown("#### 회원가입")
+    st.markdown("""
+        <style>
+        .st-ck {
+            border: 2px solid #000;  # 검은색 테두리 설정
+            padding: 10px;           # 테두리와 내용 사이의 간격
+        }
+        </style>
+        #### 회원가입
+        """, unsafe_allow_html=True)
     
     user_name = st.text_input("이름", key="name_signup")
     email = st.text_input("이메일 주소", key="email_signup")
