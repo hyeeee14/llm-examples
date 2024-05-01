@@ -9,15 +9,7 @@ st_supabase_client = st.connection("supabase",type=SupabaseConnection, url=SUPAB
 
 # 컨테이너 생성
 with st.container(border=True):
-    st.markdown("""
-        <style>
-        .st-ck {
-            border: 2px solid #FF0000;  # 검은색 테두리 설정
-            padding: 10px;           # 테두리와 내용 사이의 간격
-        }
-        </style>
-        #### 회원가입
-        """)
+    st.markdown("#### 회원가입")
     
     user_name = st.text_input("이름", key="name_signup")
     email = st.text_input("이메일 주소", key="email_signup")
