@@ -12,7 +12,7 @@ with st.container(border=True):
     st.markdown("""
         <style>
         .st-ck {
-            border: 2px solid #000;  # 검은색 테두리 설정
+            border: 2px solid #FF0000;  # 검은색 테두리 설정
             padding: 10px;           # 테두리와 내용 사이의 간격
         }
         </style>
