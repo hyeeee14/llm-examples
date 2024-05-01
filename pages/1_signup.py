@@ -17,7 +17,7 @@ with st.container(border=True):
         }
         </style>
         #### 회원가입
-        """, unsafe_allow_html=True)
+        """)
     
     user_name = st.text_input("이름", key="name_signup")
     email = st.text_input("이메일 주소", key="email_signup")
