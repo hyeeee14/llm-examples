@@ -71,7 +71,7 @@ if user_input := st.chat_input():
         assistant_reply = response.choices[0].message.content
         st.session_state.conversation_history.append({"role": "assistant", "content": assistant_reply})
         st.chat_message("assistant").write(assistant_reply)  
-
+        '''
         # Store user and assistant message to database
         st_supabase_client.table("career2").insert(
             [
@@ -91,7 +91,7 @@ if user_input := st.chat_input():
                 }
             ]
         ).execute()
-
+        '''
 
 
 # 대화 로그를 파일에 저장하는 함수

@@ -6,7 +6,7 @@ SUPABASE_URL = st.secrets["SUPABASE_URL"]
 SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
 
 st_supabase_client = st.connection("supabase",type=SupabaseConnection, url=SUPABASE_URL, key=SUPABASE_KEY)
-
+'''
 with st.container(border=True):
     st.markdown("#### 로그인")
     
@@ -36,3 +36,4 @@ with st.container(border=True):
         except Exception as e:
             st.error("로그인 실패")
 
+'''
