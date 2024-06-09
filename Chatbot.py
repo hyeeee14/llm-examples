@@ -4,7 +4,7 @@ import streamlit as st
 
 from datetime import datetime
 from st_supabase_connection import SupabaseConnection
-
+'''
 st_supabase_client = st.connection("supabase",type=SupabaseConnection, url=st.secrets['SUPABASE_URL'], key=st.secrets['SUPABASE_KEY'])
 try:
     st_supabase_client.table("career2").select("user_name, message").execute()
@@ -19,6 +19,7 @@ if "user_id" not in st.session_state:
 
 user_id = st.session_state["user_id"]
 user_name = st.session_state["user_metadata"]["user_name"]
+'''
 
 st.title("Career Counseling Chatbot💬")
 st.caption("🚀 AI Career Counselor Conversational Assistant produced by Hyerim")
