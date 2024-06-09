@@ -4,22 +4,22 @@ import streamlit as st
 
 from datetime import datetime
 from st_supabase_connection import SupabaseConnection
-'''
-st_supabase_client = st.connection("supabase",type=SupabaseConnection, url=st.secrets['SUPABASE_URL'], key=st.secrets['SUPABASE_KEY'])
-try:
-    st_supabase_client.table("career2").select("user_name, message").execute()
-except Exception as e:
-    st.write(e)
 
-if "user_id" not in st.session_state:
-    st.error("로그인이 필요합니다.")
-    if st.button("로그인하러 가기"):
-        st.switch_page("pages/2_login.py")
-    st.stop()
+# st_supabase_client = st.connection("supabase",type=SupabaseConnection, url=st.secrets['SUPABASE_URL'], key=st.secrets['SUPABASE_KEY'])
+# try:
+#     st_supabase_client.table("career2").select("user_name, message").execute()
+# except Exception as e:
+#     st.write(e)
 
-user_id = st.session_state["user_id"]
-user_name = st.session_state["user_metadata"]["user_name"]
-'''
+# if "user_id" not in st.session_state:
+#     st.error("로그인이 필요합니다.")
+#     if st.button("로그인하러 가기"):
+#         st.switch_page("pages/2_login.py")
+#     st.stop()
+
+# user_id = st.session_state["user_id"]
+# user_name = st.session_state["user_metadata"]["user_name"]
+
 
 st.title("Career Counseling Chatbot💬")
 st.caption("🚀 AI Career Counselor Conversational Assistant produced by Hyerim")
@@ -72,27 +72,27 @@ if user_input := st.chat_input():
         assistant_reply = response.choices[0].message.content
         st.session_state.conversation_history.append({"role": "assistant", "content": assistant_reply})
         st.chat_message("assistant").write(assistant_reply)  
-        '''
+        
         # Store user and assistant message to database
-        st_supabase_client.table("career2").insert(
-            [
-                {
-                    "user_id": user_id,
-                    "user_name": user_name,
-                    "role": "user",
-                    "message": user_input,
-                    "created_at": datetime.now().isoformat()
-                },
-                {
-                    "user_id": user_id,
-                    "user_name": user_name,
-                    "role": "assistant",
-                    "message": assistant_reply,
-                    "created_at": datetime.now().isoformat()
-                }
-            ]
-        ).execute()
-        '''
+        # st_supabase_client.table("career2").insert(
+        #     [
+        #         {
+        #             "user_id": user_id,
+        #             "user_name": user_name,
+        #             "role": "user",
+        #             "message": user_input,
+        #             "created_at": datetime.now().isoformat()
+        #         },
+        #         {
+        #             "user_id": user_id,
+        #             "user_name": user_name,
+        #             "role": "assistant",
+        #             "message": assistant_reply,
+        #             "created_at": datetime.now().isoformat()
+        #         }
+        #     ]
+        # ).execute()
+        
 
 
 # 대화 로그를 파일에 저장하는 함수
