@@ -39,7 +39,7 @@ openai_api_key = st.secrets['OPENAI_API_KEY']
 if "conversation_history" not in st.session_state:    
     st.session_state.conversation_history = [
         {"role": "system", "content": st.secrets['system_prompt']},
-        {"role": "assistant", "content": "안녕하세요! 저는 당신의 AI 진로 상담사입니다. 당신의 이름은 무엇인가요?"}
+        {"role": "assistant", "content": "안녕하세요! 저는 오늘 당신과 진로에 대해 이야기 나눠볼 챗봇입니다. 시작해볼까요?"}
     ]
 
 # Display chat messages from history on app rerun
