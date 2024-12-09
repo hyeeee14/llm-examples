@@ -7,7 +7,6 @@ import pandas as pd
 import numpy as np
 import pickle
 import streamlit as st
-import bs4
 import json
 from langchain import hub
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -39,11 +38,11 @@ from langchain_core.messages import HumanMessage, AIMessage
 from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain_community.utilities.tavily_search import TavilySearchAPIWrapper
 from langchain_core.tools import tool
+import chardet
 
 # ----------------------------------------------------------------------------------------------------
 # streamlit
 # ----------------------------------------------------------------------------------------------------
-
 
 st.set_page_config(layout="wide",        
                    page_title="Career Counseling Chatbot💬", 
