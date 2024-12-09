@@ -1,5 +1,7 @@
 streamlit>=1.28
 langchain>=0.0.217
+langchain-community
+chardet
 openai>=1.2
 duckduckgo-search
 anthropic>=0.3.0
