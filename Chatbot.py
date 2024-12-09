@@ -1,7 +1,6 @@
 from openai import OpenAI
 from datetime import datetime
 from st_supabase_connection import SupabaseConnection
-!pip install langchain-community
 import os
 import pandas as pd
 import numpy as np
@@ -19,7 +18,7 @@ from langchain.vectorstores import FAISS
 from langchain.chains import RetrievalQA
 from langchain_openai import OpenAI
 import openai
-import chromadb
+#import chromadb
 from chromadb.utils import embedding_functions
 from operator import itemgetter
 from langchain_community.chat_message_histories import ChatMessageHistory
