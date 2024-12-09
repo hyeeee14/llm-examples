@@ -1,7 +1,7 @@
 from openai import OpenAI
 from datetime import datetime
 from st_supabase_connection import SupabaseConnection
-
+!pip install langchain-community
 import os
 import pandas as pd
 import numpy as np
