@@ -23,15 +23,12 @@ from langchain_openai import OpenAI
 import openai
 import chromadb
 from chromadb.utils import embedding_functions
-from langchain_chroma import Chroma
 from operator import itemgetter
 from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
 from langchain.memory import ConversationSummaryBufferMemory
-import chardet
-
 from langchain_core.prompts.prompt import PromptTemplate
 from langchain.chains import create_history_aware_retriever, create_retrieval_chain
 from langchain_core.chat_history import InMemoryChatMessageHistory
