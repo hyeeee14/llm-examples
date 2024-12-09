@@ -6,7 +6,8 @@ SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
 
 st_supabase_client = st.connection("supabase",type=SupabaseConnection, url=SUPABASE_URL, key=SUPABASE_KEY)
 
-
+'''
+# 컨테이너 생성
 with st.container(border=True):
     st.markdown("#### 회원가입")
     
@@ -49,5 +50,5 @@ with st.container(border=True):
                         #st.switch_page("pages/Chatbot.py")
                 
                 except Exception as e:
-                    st.error("로그인 실패")
-                    
+                    st.error("로그인 실패")                   
+'''

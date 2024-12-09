@@ -2,6 +2,7 @@ from openai import OpenAI
 from datetime import datetime
 from st_supabase_connection import SupabaseConnection
 
+<<<<<<< HEAD
 import os
 import pandas as pd
 import numpy as np
@@ -58,9 +59,23 @@ st.title("Career Counseling Chatbot💬")
 st.markdown('진로 결정 어려움을 해결하여 진로 결정을 잘할 수 있도록 도와주는 AI 진로 상담사')
 st.caption("🚀 AI Career Counselor Conversational Assistant produced by Hyerim")
 
+=======
+# st_supabase_client = st.connection("supabase",type=SupabaseConnection, url=st.secrets['SUPABASE_URL'], key=st.secrets['SUPABASE_KEY'])
+# try:
+#     st_supabase_client.table("career2").select("user_name, message").execute()
+# except Exception as e:
+#     st.write(e)
 
-user_id = st.session_state["user_id"]
-user_name = st.session_state["user_metadata"]["user_name"]
+# if "user_id" not in st.session_state:
+#     st.error("로그인이 필요합니다.")
+#     if st.button("로그인하러 가기"):
+#         st.switch_page("pages/2_login.py")
+#     st.stop()
+
+# user_id = st.session_state["user_id"]
+# user_name = st.session_state["user_metadata"]["user_name"]
+>>>>>>> 7c947e3a2baf0e853ce3d22d151a6b832deeb580
+
 
 OPENAI_API_KEY = st.secrets['OPENAI_API_KEY']
 OPENAI_ORGANIZATION = st.secrets['OPENAI_ORGANIZATION']
@@ -180,6 +195,7 @@ llm.bind_tools(tools=[SearchCareerInfo])
 # tool_choice=[SearchCareerInfo]
 
 # Initialize chat history
+<<<<<<< HEAD
 if "messages" not in st.session_state:
     st.session_state.messages = [
         {"role": "system", "content": system_prompt},
@@ -191,6 +207,13 @@ if "memory" not in st.session_state:
           max_token_limit=1000,  # 요약의 기준이 되는 토큰 길이를 설정합니다.
           return_messages=True,
           )
+=======
+if "conversation_history" not in st.session_state:    
+    st.session_state.conversation_history = [
+        {"role": "system", "content": st.secrets['system_prompt']},
+        {"role": "assistant", "content": "안녕하세요! 저는 오늘 당신과 진로에 대해 이야기 나눠볼 챗봇입니다. 시작해볼까요?"}
+    ]
+>>>>>>> 7c947e3a2baf0e853ce3d22d151a6b832deeb580
 
 # Display chat messages from history on app rerun
 for message in st.session_state.messages:        
@@ -199,12 +222,20 @@ for message in st.session_state.messages:
     st.chat_message(message["role"]).write(message["content"]) 
     print(message) 
 
+<<<<<<< HEAD
 if user_input := st.chat_input(): 
+=======
+
+ 
+
+if user_input := st.chat_input():    
+>>>>>>> 7c947e3a2baf0e853ce3d22d151a6b832deeb580
     #Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": user_input})
     st.chat_message("user").write(user_input)
 
     with st.spinner('Please wait...'):
+<<<<<<< HEAD
         response = openai.chat.completions.create(
             model="gpt-4o",
             messages=st.session_state.messages,
@@ -240,6 +271,41 @@ if user_input := st.chat_input():
     st.session_state.messages.append({"role": "assistant", "content": assistant_replys})    
     st.session_state.memory.save_context(inputs={"user": user_input}, outputs={"assistant": assistant_replys})
 
+=======
+        #챗봇 응답 생성
+        response = client.chat.completions.create(
+            model=st.session_state["openai_model"], 
+            messages=st.session_state.conversation_history,
+            #stream=True,
+            max_tokens=1000,
+            temperature=0.7,      
+            )
+
+        assistant_reply = response.choices[0].message.content
+        st.session_state.conversation_history.append({"role": "assistant", "content": assistant_reply})
+        st.chat_message("assistant").write(assistant_reply)  
+        
+        # Store user and assistant message to database
+        # st_supabase_client.table("career2").insert(
+        #     [
+        #         {
+        #             "user_id": user_id,
+        #             "user_name": user_name,
+        #             "role": "user",
+        #             "message": user_input,
+        #             "created_at": datetime.now().isoformat()
+        #         },
+        #         {
+        #             "user_id": user_id,
+        #             "user_name": user_name,
+        #             "role": "assistant",
+        #             "message": assistant_reply,
+        #             "created_at": datetime.now().isoformat()
+        #         }
+        #     ]
+        # ).execute()
+        
+>>>>>>> 7c947e3a2baf0e853ce3d22d151a6b832deeb580
 
 # 대화 로그 저장
 def save_conversation_to_file(conversation):
