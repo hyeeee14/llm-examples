@@ -7,7 +7,6 @@ import pandas as pd
 import numpy as np
 import pickle
 import streamlit as st
-from langchain_chroma import Chroma
 import bs4
 import json
 from langchain import hub
