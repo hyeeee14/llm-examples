@@ -18,7 +18,7 @@ from langchain.vectorstores import FAISS
 from langchain.chains import RetrievalQA
 from langchain_openai import OpenAI
 import openai
-import chromadb
+#import chromadb
 from chromadb.utils import embedding_functions
 from operator import itemgetter
 from langchain_community.chat_message_histories import ChatMessageHistory
