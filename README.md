@@ -1,7 +1,5 @@
 # 🎈 Streamlit + LLM App <Career Counseling Chatbot>
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)
-
 ## Overview of the App
 
 - Chatbot: AI Career Counselor Conversational Assistant 
