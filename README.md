@@ -4,7 +4,7 @@
 
 ## Overview of the App
 
-- Chatbot
+- Chatbot: AI Career Counselor Conversational Assistant 
 
 ## Go to experience the app!
 
