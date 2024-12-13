@@ -20,6 +20,13 @@ from st_supabase_connection import SupabaseConnection
 # user_id = st.session_state["user_id"]
 # user_name = st.session_state["user_metadata"]["user_name"]
 
+st.set_page_config(
+    page_title="Career Counseling Chatbot💬",
+    page_icon="💬",
+    layout="wide",
+    initial_sidebar_state="collapsed"  # 'collapsed'로 설정하면 사이드바 접힌 상태로 시작
+)
+
 
 st.title("Career Counseling Chatbot💬")
 st.caption("🚀 AI Career Counselor Conversational Assistant produced by Hyerim")
