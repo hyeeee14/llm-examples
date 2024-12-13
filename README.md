@@ -8,7 +8,7 @@
 
 ## Go to experience the app!
 
-![Career Counseling Chatbot App]([https://llm-examples.streamlit.app/](https://llm-based-career-counseling-chatbot.streamlit.app/))
+![Career Counseling Chatbot App](https://llm-based-career-counseling-chatbot.streamlit.app/)
 
 ### Get an OpenAI API key
 
