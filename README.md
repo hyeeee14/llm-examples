@@ -8,8 +8,6 @@
 
 [Career Counseling Chatbot App](https://llm-based-career-counseling-chatbot.streamlit.app/)
 
-### Get an OpenAI API key
-
 ## Run it locally
 
 ```sh
