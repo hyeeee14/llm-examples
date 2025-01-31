@@ -1,7 +1,6 @@
 streamlit>=1.28
 langchain>=0.0.217
 langchain-community
-langchain.vectorstores
 chromadb==0.3.29
 chardet
 openai>=1.2
