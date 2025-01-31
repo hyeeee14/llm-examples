@@ -1,7 +1,7 @@
 streamlit>=1.28
 langchain>=0.0.217
 langchain-community
-langchain-chroma
+langchain_chroma
 chardet
 openai>=1.2
 duckduckgo-search
