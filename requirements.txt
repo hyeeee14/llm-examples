@@ -11,4 +11,3 @@ streamlit-feedback
 st_supabase_connection
 langchain_openai
 langchain_core
-chromadb
