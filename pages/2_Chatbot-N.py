@@ -41,7 +41,7 @@ import chardet
 # ----------------------------------------------------------------------------------------------------
 
 st.set_page_config(
-    page_title="Career Counseling Chatbot💬",
+    page_title="Career Counseling Chatbot-N💬",
     page_icon="💬",
     layout="wide",
     initial_sidebar_state="collapsed"  # 'collapsed'로 설정하면 사이드바 접힌 상태로 시작
