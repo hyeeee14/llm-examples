@@ -47,7 +47,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"  # 'collapsed'로 설정하면 사이드바 접힌 상태로 시작
 )
 
-st.title("Career Counseling Chatbot💬")
+st.title("Career Counseling Chatbot-N💬")
 st.markdown('진로 결정 어려움을 해결하여 진로 결정을 잘할 수 있도록 도와주는 AI 진로 상담사')
 st.caption("🚀 AI Career Counselor Conversational Assistant produced by Hyerim")
 
