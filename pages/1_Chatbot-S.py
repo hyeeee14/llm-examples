@@ -86,12 +86,10 @@ def SearchCareerInfo(query):
 def SearchSeniorInfo(query):
     """Get the current Senior_info in RAG"""
     senior_info = None
-    embedding = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY) # 임베딩 함수 설정
     # load from disk (save 이후)
     vector = Chroma(persist_directory="career_saramin", embedding_function=embedding, collection_name="career_saramin")
     # ✅ RAG 기반 검색 수행
-    search_results = vector.similarity_search(query, k=1)  # 🔥 상위 3개 문서 검색
-
+    search_results = vector.similarity_search(query, k=1)  # 🔥 상위 1개 문서 검색
     senior_info = {
         "name": "senior_info",
         "query": query,
@@ -151,7 +149,7 @@ llm = ChatOpenAI(model_name="gpt-4o",
                  openai_api_key=OPENAI_API_KEY, 
                  organization=OPENAI_ORGANIZATION)
                  
-llm.bind_tools(tools=[SearchCareerInfo])
+llm.bind_tools(tools=[SearchCareerInfo, SearchSeniorInfo])
 # tool_choice=[SearchCareerInfo]
 
 # Initialize chat history
