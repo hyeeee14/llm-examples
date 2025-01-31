@@ -1,9 +1,9 @@
 import streamlit as st
 
 st.markdown("실험에 참여해주셔서 감사합니다!📝")
-st.session_state["radio"] = st.radio("챗봇을 골라주세요!", ["chatbot_s", "chatbot_n"], index=None)
+st.caption("챗봇을 골라주세요.")
 
-if st.session_state["radio"] == "chatbot_s":
+if st.button("Chatbot-S"):
     st.switch_page("pages/1_Chatbot-S.py")
-else: 
+if st.button("Chatbot-N"):
     st.switch_page("pages/2_Chatbot-N.py")
