@@ -1,6 +1,8 @@
 from openai import OpenAI
 import os
-from langchain_chroma import Chroma
+#from langchain_chroma import Chroma
+from langchain.vectorstores import Chroma
+
 import pandas as pd
 import numpy as np
 import pickle
