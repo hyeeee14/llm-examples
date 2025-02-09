@@ -1,6 +1,8 @@
 from openai import OpenAI
 import os
-from langchain.vectorstores import Chroma
+#from langchain_chroma import Chroma
+from langchain_community.vectorstores import Chroma
+
 import pandas as pd
 import numpy as np
 import pickle
@@ -64,6 +66,11 @@ embedding = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
 #----------------------------------------------------------------------------------------------------
 # function calling
 # ----------------------------------------------------------------------------------------------------
+# 현재 작업 디렉토리 가져오기
+current_directory = os.getcwd()
+
+# 안전한 경로 설정 (배포 환경에서도 유지됨)
+persist_dir = os.path.join(current_directory, "career_saramin")
 
 @tool
 def SearchCareerInfo(query):
@@ -74,7 +81,7 @@ def SearchCareerInfo(query):
     url = "https://www.work.go.kr/consltJobCarpa/srch/getExpTheme.do?jobClcd=D&pageIndex=1&pageUnit=10"
 
     # TavilySearchAPIWrapper를 이용하여 검색 결과 가져오기
-    search_results = TavilySearchResults(max_results=5).invoke(query)
+    search_results = TavilySearchResults(max_results=5, tavily_api_key=st.secrets['TAVILY_API']).invoke(query)
     career_info = {
         "name": career_info,
         "query": query,
@@ -86,14 +93,23 @@ def SearchCareerInfo(query):
 def SearchSeniorInfo(query):
     """Get the current Senior_info in RAG"""
     senior_info = None
+    embedding = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
     # load from disk (save 이후)
-    vector = Chroma(persist_directory="career_saramin", embedding_function=embedding, collection_name="career_saramin")
+
+    try:
+        vector = Chroma(persist_directory=persist_dir, embedding_function=embedding, collection_name="career_saramin")
+        print("ChromaDB 문서 개수:", vector._collection.count())
+    except Exception as e:
+        print("Error Loading ChromaDB:", e)
     # ✅ RAG 기반 검색 수행
-    search_results = vector.similarity_search(query, k=1)  # 🔥 상위 1개 문서 검색
+    search_results = vector.similarity_search(query, k=3)  # 🔥 상위 1개 문서 검색
+    # page_content만 리스트로 추출
+    page_contents = [doc.page_content for doc in search_results]
+
     senior_info = {
         "name": "senior_info",
         "query": query,
-        "careersenior_info": search_results[0].page_content
+        "careersenior_info": page_contents,
     }
     return senior_info
 
@@ -139,9 +155,10 @@ tools = [
 
 # ----------------------------------------------------------------------------------------------------
 # RAG 
-# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------------
 # Session State
-# ----------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------
 
 
 llm = ChatOpenAI(model_name="gpt-4o", 
@@ -149,13 +166,13 @@ llm = ChatOpenAI(model_name="gpt-4o",
                  openai_api_key=OPENAI_API_KEY, 
                  organization=OPENAI_ORGANIZATION)
                  
-llm.bind_tools(tools=[SearchCareerInfo, SearchSeniorInfo])
+#llm.bind_tools(tools=[SearchCareerInfo, SearchSeniorInfo])
 # tool_choice=[SearchCareerInfo]
 
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "system", "content": st.secrets["system_prompt"]},
+        {"role": "system", "content": st.secrets["system_prompt_S"]},
         {"role": "assistant", "content": "안녕하세요! 저는 오늘 당신과 함께 진로 고민에 대해 이야기 나눠볼 AI 진로 상담사입니다.😊 제가 어떻게 불러주면 좋을까요?"}
     ]
 if "memory" not in st.session_state:
@@ -208,7 +225,8 @@ if user_input := st.chat_input():
                 assistant_replys = assistant_reply.choices[0].message.content
             elif function_name == "SearchSeniorInfo":
                 # 함수 실행
-                function_response = SearchSeniorInfo(function_name)
+                #function_response = SearchSeniorInfo(function_name)
+                function_response = SearchSeniorInfo(function_args["query"])
                 # 함수 응답을 메시지 이력에 추가
                 st.session_state.messages.append({
                     "role": "function",

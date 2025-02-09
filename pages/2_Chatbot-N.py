@@ -51,8 +51,6 @@ st.title("Career Counseling Chatbot-N💬")
 st.markdown('진로 결정 어려움을 해결하여 진로 결정을 잘할 수 있도록 도와주는 AI 진로 상담사')
 st.caption("🚀 AI Career Counselor Conversational Assistant produced by Hyerim")
 
-
-
 OPENAI_API_KEY = st.secrets['OPENAI_API_KEY']
 OPENAI_ORGANIZATION = st.secrets['OPENAI_ORGANIZATION']
 
@@ -129,7 +127,7 @@ llm.bind_tools(tools=[SearchCareerInfo])
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "system", "content": st.secrets["system_prompt"]},
+        {"role": "system", "content": st.secrets["system_prompt_N"]},
         {"role": "assistant", "content": "안녕하세요! 저는 오늘 당신과 함께 진로 고민에 대해 이야기 나눠볼 AI 진로 상담사입니다.😊 제가 어떻게 불러주면 좋을까요?"}
     ]
 if "memory" not in st.session_state:
