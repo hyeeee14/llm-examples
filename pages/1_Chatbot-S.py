@@ -3,7 +3,7 @@ import os, json, chardet, openai
 from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain_community.utilities.tavily_search import TavilySearchAPIWrapper
 from langchain_core.tools import tool
-from langchain.memory import ConversationSummaryBufferMemory, 
+from langchain.memory import ConversationSummaryBufferMemory
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
 
